@@ -127,7 +127,7 @@ func (evR *EvidenceReactor) broadcastEvidenceRoutine(peer p2p.Peer) {
 				return
 			}
 		}
-
+		time.Sleep(20 * time.Second)
 		ev := next.Value.(types.Evidence)
 		msg, retry := evR.checkSendEvidenceMessage(peer, ev)
 		if msg != nil {

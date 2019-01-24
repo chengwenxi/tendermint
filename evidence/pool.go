@@ -3,6 +3,7 @@ package evidence
 import (
 	"fmt"
 	"sync"
+	"encoding/json"
 
 	clist "github.com/tendermint/tendermint/libs/clist"
 	dbm "github.com/tendermint/tendermint/libs/db"
@@ -110,6 +111,8 @@ func (evpool *EvidencePool) AddEvidence(evidence types.Evidence) (err error) {
 	}
 
 	evpool.logger.Info("Verified new evidence of byzantine behaviour", "evidence", evidence)
+	evidenceJson, _ := json.Marshal(evidence)
+	println("Verified new evidence of byzantine behaviour, evidence: ", string(evidenceJson))
 
 	// add evidence to clist
 	evpool.evidenceList.PushBack(evidence)

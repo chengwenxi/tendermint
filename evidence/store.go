@@ -2,6 +2,7 @@ package evidence
 
 import (
 	"fmt"
+	"encoding/json"
 
 	dbm "github.com/tendermint/tendermint/libs/db"
 	"github.com/tendermint/tendermint/types"
@@ -173,7 +174,8 @@ func (store *EvidenceStore) MarkEvidenceAsBroadcasted(evidence types.Evidence) {
 func (store *EvidenceStore) MarkEvidenceAsCommitted(evidence types.Evidence) {
 	// if its committed, its been broadcast
 	store.MarkEvidenceAsBroadcasted(evidence)
-
+	evidenceJson,_ := json.Marshal(evidence)
+	println("Mark evidence as committed, evidence: ", string(evidenceJson))
 	pendingKey := keyPending(evidence)
 	store.db.Delete(pendingKey)
 
