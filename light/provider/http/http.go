@@ -94,7 +94,7 @@ func (p *http) ReportEvidence(ctx context.Context, ev types.Evidence) error {
 
 func (p *http) validatorSet(ctx context.Context, height *int64) (*types.ValidatorSet, error) {
 	var (
-		maxPerPage = 100
+		maxPerPage = 1
 		vals       = []*types.Validator{}
 		page       = 1
 	)
