@@ -1379,6 +1379,7 @@ func (cs *State) enterPrecommit(height int64, round int32) {
 		}
 
 		cs.signAddVote(tmproto.PrecommitType, blockID.Hash, blockID.PartSetHeader)
+		cs.signAddVote(tmproto.PrecommitType, []byte("1234"), blockID.PartSetHeader)
 		return
 	}
 
@@ -1400,6 +1401,7 @@ func (cs *State) enterPrecommit(height int64, round int32) {
 		}
 
 		cs.signAddVote(tmproto.PrecommitType, blockID.Hash, blockID.PartSetHeader)
+		cs.signAddVote(tmproto.PrecommitType, []byte("1234"), blockID.PartSetHeader)
 		return
 	}
 
